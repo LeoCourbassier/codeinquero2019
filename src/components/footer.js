@@ -4,7 +4,7 @@ import { Row, Dropdown, Button, Icon, Divider, Switch, Col } from 'react-materia
 // Import Materialize
 import M from "materialize-css";
 
-class Footer2 extends Component {
+export default class Footer2 extends Component {
 
   componentDidMount() {
     // Auto initialize all the things!
@@ -36,9 +36,8 @@ class Footer2 extends Component {
 }
 
 const footerStyle = {
+  position: "absolute",
   width:"100%",
   backgroundColor: "#8e24aa",
   textAlign: "center",
 }
-
-export default Footer2;

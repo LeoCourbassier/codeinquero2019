@@ -17,6 +17,8 @@ export default class MonitorCatalog extends React.Component {
         topicos: [],
         materia_selecionada: null,
         topico_selecionado: null,
+        online: true,
+        backup: []
     };
 
     componentDidMount() {
@@ -42,9 +44,9 @@ export default class MonitorCatalog extends React.Component {
             const newState = Object.assign({}, this.state, {
               monitors: newContacts
             });
-    
             // store the new state object in the component's state
             this.setState(newState);
+            this.state.backup = this.state.monitors;
           })
           .catch(error => console.log(error));
 
@@ -81,8 +83,8 @@ export default class MonitorCatalog extends React.Component {
                 <Bar ></Bar>
                 <Row style={{ margin: "20px" }}>
                     
-                    <Col><Switch offLabel="Online" onLabel="" /></Col>
-                </Row >
+                    <Col><Switch onChange={ (e) => this._filter(e) } offLabel="Qualquer Estado" onLabel="Online" /></Col>
+                </Row>
                 <Row style={{ margin: "30px", textAlign: "left" }}>
                     <h5>Alunos:</h5>
                 </Row>
@@ -108,6 +110,27 @@ export default class MonitorCatalog extends React.Component {
         return r;
     }
 
+    _filter(e) {
+        this.setState({ online: !this.state.online });
+        console.log(this.state.online);
+        this.state.monitors = JSON.parse(JSON.stringify(this.state.backup));
+
+        if (!this.state.online) return;
+
+        for (let i = 0; i < this.state.monitors.length; i++) {
+            if (!this.state.monitors[i].online)
+            {
+                if (i + 1 < this.state.monitors.length) 
+                {
+                    this.state.monitors[i] = this.state.monitors.pop();
+                    i--;
+                }
+                else
+                    this.state.monitors.pop();
+            }
+        }
+    }
+
     showMateria(){
         let r = [];
         for (let materia of this.state.materias) {
@@ -127,5 +150,8 @@ export default class MonitorCatalog extends React.Component {
 
 
 const styleRow = {
-    margin: "20px"
+    margin: "20px",
+    minHeight: "350px",
+    maxHeight: "350px",
+    overflowY: "scroll"
 }

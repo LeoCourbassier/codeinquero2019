@@ -1,10 +1,11 @@
 import React from 'react';
-import { Row, Col, Card, CardTitle } from 'react-materialize';
+import { Row, Col, Card, CardTitle, Icon } from 'react-materialize';
 // Import Materialize
 import M from "materialize-css";
 
 
 export default class CardC extends React.Component {
+    
     render() {
         return (
                 <Col m={2} s={12} style={styleCard}>
@@ -18,7 +19,8 @@ export default class CardC extends React.Component {
                         }}></img>
                         <br></br>
                         { this.props.monitor.nome }<br />
-                        { this._returnNewCollection() }<br/>
+                        <div>{this.props.monitor.online == 1 ? <Icon className="green-text">brightness_1</Icon> : <Icon className="red-text">clear</Icon>}</div>
+                        <div style={{ minHeight:"50px", maxHeight:"50px", overflow: "auto" }}>{ this._returnNewCollection() }</div>
                         </Card>
                 </Col>
         );
