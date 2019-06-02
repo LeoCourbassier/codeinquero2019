@@ -14,7 +14,9 @@ export default class Catalog extends React.Component {
     state = {
         monitors: [],
         materias: [],
-        temas: [],
+        topicos: [],
+        materia_selecionada: null,
+        topico_selecionado: null,
     };
 
     componentDidMount() {
@@ -46,25 +48,24 @@ export default class Catalog extends React.Component {
           .catch(error => console.log(error));
 
           axios
-          .get("http://165.227.23.238:5000/materia/")
+          .get("http://165.227.23.238:5000/topicos/")
           .then(response => {
             // create an array of contacts only with relevant data
             console.log(response.data)
             const newContacts = response.data.map(c => {
-              return {
-                descricao: c.descricao,
-                email: c.email,
-                id: c.id_monitor,
-                instituicao: c.instituicao, 
-                nome: c.nome,
-                media: c.media
+              
+            return {
+                id: c.id_topico,
+                materia: c.materia,
+                nome: c.nome
               };
             });
     
             // create a new "State" object without mutating 
             // the original State object. 
             const newState = Object.assign({}, this.state, {
-              monitors: newContacts
+                topicos: newContacts,
+                materias: [...new Set(newContacts.map(t => t.materia))]
             });
     
             // store the new state object in the component's state
@@ -79,31 +80,13 @@ export default class Catalog extends React.Component {
                 <Bar ></Bar>
                 <Row style={{ margin: "20px" }}>
                     <Col>
-                        <Dropdown trigger={<Button>Materias</Button>}>
-                            <a href="#">one</a>
-                            <a href="#"> two</a>
-                            <Divider />
-                            <a href="#">three</a>
-                            <a href="#">
-                                <Icon>view_module</Icon>
-                                four</a>
-                            <a href="#">
-                                <Icon> cloud</Icon>
-                                five</a>
+                        <Dropdown trigger={<Button>Matérias</Button>}>
+                            {this.showMateria()}
                         </Dropdown>
                     </Col>
                     <Col>
-                        <Dropdown trigger={<Button>Temas</Button>}>
-                            <a href="#">one</a>
-                            <a href="#"> two</a>
-                            <Divider />
-                            <a href="#">three</a>
-                            <a href="#">
-                                <Icon>view_module</Icon>
-                                four</a>
-                            <a href="#">
-                                <Icon> cloud</Icon>
-                                five</a>
+                        <Dropdown trigger={<Button>Tópicos</Button>}>
+                        {this.showTopicos()}
                         </Dropdown>
                     </Col>
                     <Col><Switch offLabel="Online" onLabel="" /></Col>
@@ -122,8 +105,29 @@ export default class Catalog extends React.Component {
 
     getProf() {
         let r = [];
-        for (let i = 0; i < this.state.monitors.length; i++) {
-            r.push(<CardC monitor={ this.state.monitors[i]} />);
+        for (let monitor of this.state.monitors.filter(mon => {
+            if (this.state.materia_selecionada == null || this.state.topico_selecionado == null) {
+                return true;
+            }
+            return this.state.monitors.topicos.findIndex(top => top == this.state.topico_selecionado) != -1;
+        })) {
+            r.push(<CardC monitor={ monitor } />);
+        }
+        return r;
+    }
+
+    showMateria(){
+        let r = [];
+        for (let materia of this.state.materias) {
+            r.push(<a onpress=''>{ materia } </a>);
+        }
+        return r;
+    }
+
+    showTopicos(){
+        let r = [];
+        for (let i = 0; i < this.state.topicos.length; i++) {
+            r.push(<a >{ this.state.topicos[i].nome} </a>);
         }
         return r;
     }
