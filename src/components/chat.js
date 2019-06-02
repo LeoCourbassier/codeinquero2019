@@ -9,6 +9,12 @@ export default class Chat extends Component {
         super(props);
         this.state = { msg: '', messages: [], id: 4 };
     }
+    
+    componentDidMount() {
+        this.setState({
+            id: this.props.match.params.id
+        })
+    }
     render() {
         return (
             <div>
