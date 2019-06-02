@@ -29,6 +29,12 @@ export default class Home extends React.Component {
         this._getUserInfo();
     }
 
+    componentWillMount() {
+        this.setState({ 
+            id: this.props.match.params.id
+        });
+    }
+
     render() {
         return (
             <div style={{ textAlign: "center" }}>
@@ -95,9 +101,7 @@ export default class Home extends React.Component {
     }
 
     _getUserInfo() {
-        this.setState({ 
-            id: this.props.match.params.id
-        });
+        
         axios
           .get("http://165.227.23.238:5000/monitor/" + this.state.id)
           .then(response => {
