@@ -2,7 +2,7 @@ import React from 'react';
 import CardC from './card';
 import Bar from './bar';
 import Footer from './footer';
-import { Row, Dropdown, Button, Icon, Divider,Switch, Col } from 'react-materialize';
+import { Row, Dropdown, Button, Icon, Divider, Switch, Col } from 'react-materialize';
 // Import Materialize
 import M from "materialize-css";
 
@@ -10,48 +10,28 @@ import M from "materialize-css";
 export default class Home extends React.Component {
     render() {
         return (
-            <div  style={{ textAlign: "center" }}>
+            <div style={{ backgroundColor: "#8e24aa" }}>
                 <Bar></Bar>
-                <Row  style={{margin:"20px"}}>
-                    <Col>
-                    <Dropdown trigger={<Button>Materias</Button>}>
-                        <a href="#">one</a>
-                        <a href="#"> two</a>
-                        <Divider />
-                        <a href="#">three</a>
-                        <a href="#">
-                            <Icon>view_module</Icon>
-                            four</a>
-                        <a href="#">
-                            <Icon> cloud</Icon>
-                            five</a>
-                    </Dropdown>
+                <Row style={{ margin: "20px", height: "600px" }}>
+                    <Col  m={2} s={12}>
                     </Col>
-                    <Col>
-                    <Dropdown trigger={<Button>Temas</Button>}>
-                        <a href="#">one</a>
-                        <a href="#"> two</a>
-                        <Divider />
-                        <a href="#">three</a>
-                        <a href="#">
-                            <Icon>view_module</Icon>
-                            four</a>
-                        <a href="#">
-                            <Icon> cloud</Icon>
-                            five</a>
-                    </Dropdown>
+                    <Col m={4} s={12}>
+                        <h1 style={{ color: "white" }}><b>Conectando Alunos em Alunos</b></h1>
                     </Col>
-                    <Col><Switch offLabel="Online" onLabel="" /></Col>
+                    <Col m={5} s={12} >
+                    <img src={require('../imgs/logo1.png')} style={{
+                            width: 400, height: 400}}></img>
+                    </Col>
                 </Row >
-                <Row style={{margin:"30px", textAlign: "left" }}>
-                    <h5>Monitores:</h5>
+                <Row style={{ margin: "30px", textAlign: "left" }}>
+                    teste
                 </Row>
                 <Row style={styleRow}>
-                    {this.getProf()}
+
                 </Row>
                 <br></br>
                 <br></br>
-                <Footer></Footer>
+                <Footer style={{ width: "100%" }}></Footer>
             </div>
         );
     }
@@ -67,5 +47,6 @@ export default class Home extends React.Component {
 
 
 const styleRow = {
-    margin:"20px"
+    margin: "20px",
+
 }

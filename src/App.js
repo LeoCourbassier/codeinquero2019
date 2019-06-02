@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Home from './components/home';
-import Catalog from './components/home';
+import Catalog from './components/catalog';
 import Bar from './components/bar';
 import Footer from './components/footer';
 import 'materialize-css/dist/css/materialize.min.css';

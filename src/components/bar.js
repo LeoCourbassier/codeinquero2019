@@ -10,7 +10,7 @@ export default class Bar extends Component {
 
     render() {
         return (
-            <Navbar fixed="true" className="purple" brand={<a>MonitorApp</a>} alignLinks="right" style={{paddingBotton:"20px"}}>
+            <Navbar fixed="true" className="purple" brand={<a  style={{left: "50px"}}>MonitorApp</a>} alignLinks="right" style={{paddingBotton:"20px"}}>
                 <NavItem href="/home" >
                     Home
                 </NavItem>
