@@ -9,7 +9,7 @@ export default class CardC extends React.Component {
         return (
                 <Col m={2} s={12} style={styleCard}>
                     <Card header={<CardTitle></CardTitle>}
-                        actions={[<a href="/userInfo">Visualizar</a>]}
+                        actions={[<a href={"/userInfo/" + this.props.monitor.id}>Visualizar</a>]}
                         style={{ textAlign: "center" }}>
 
                         <img src={require('../imgs/monitor' + this.props.monitor.id + '.jpg')} style={{
