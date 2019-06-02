@@ -5,7 +5,6 @@ import Footer2 from './footer';
 import axios from "axios";
 import { Row, Dropdown, Button, Icon, Divider, Switch, Col } from 'react-materialize';
 // Import Materialize
-import M from "materialize-css";
 
 
 export default class Catalog extends React.Component {
@@ -15,9 +14,9 @@ export default class Catalog extends React.Component {
         monitors: [],
         materias: [],
         topicos: [],
-        materia_selecionada: null,
-        topico_selecionado: null,
-        online: 1,
+        materia_selecionada: 'Todas',
+        topico_selecionado: 'Todas',
+        online: false,
         backup: []
     };
 
@@ -38,7 +37,7 @@ export default class Catalog extends React.Component {
             // store the new state object in the component's state
             this.setState(newState);
 
-            this.state.backup = this.state.monitors;
+            this.state.backup = JSON.parse(JSON.stringify(this.state.monitors));
           })
           .catch(error => console.log(error));
 
@@ -84,7 +83,7 @@ export default class Catalog extends React.Component {
                         {this.showTopicos()}
                         </Dropdown>
                     </Col>
-                    <Col><Switch checked={ this.state.online } onChange={(e) => this._filter(e)} offLabel="Qualquer Estado" onLabel="Apenas Online" /></Col>
+                    <Col><Switch checked={ this.state.online } onChange={(e) => this._changeOnline(e)} offLabel="Qualquer Estado" onLabel="Apenas Online" /></Col>
                 </Row>
                 <Row style={{ marginLeft: "30px", textAlign: "left" }}>
                     <h5>Monitores:</h5>
@@ -98,16 +97,51 @@ export default class Catalog extends React.Component {
         );
     }
 
-    _filter(e, update = true) {
-        
-        if (update) this.setState({ online: !this.state.online });
-        console.log(this.state.online);
-        if (update) this.state.monitors = JSON.parse(JSON.stringify(this.state.backup));
+    
 
-        if (!this.state.online) return;
+    _filter(what = false) {
+        let e = what? !this.state.online : this.state.online;
 
         for (let i = 0; i < this.state.monitors.length; i++) {
-            if (!this.state.monitors[i].online)
+            let flag = false;
+            if (this.state.monitors[i].online == e || !e)
+                flag = true;
+
+            if (flag)
+            {
+                for (let j = 0; j < this.state.monitors[i].topicos.length; j++)
+                {
+                    console.log(this.state.monitors[i].topicos[j].nome + "|" + this.state.topico_selecionado);
+                    if (this.state.monitors[i].topicos[j].nome != this.state.topico_selecionado)
+                    {
+                        flag = this.state.topico_selecionado == 'Todas';
+                    } 
+                    else {
+                        flag = true;
+                        break;
+                    };
+                }
+            }
+
+            if (flag)
+            {
+                for (let j = 0; j < this.state.monitors[i].topicos.length; j++)
+                {
+                    console.log(this.state.monitors[i].topicos[j].nome + "|" + this.state.materia_selecionada);
+                    if (this.state.monitors[i].topicos[j].materia != this.state.materia_selecionada)
+                    {
+                        flag = this.state.materia_selecionada == 'Todas';
+                    } 
+                    else {
+                        flag = true;
+                        break;
+                    };
+                }
+            }
+            
+            if (this.state.monitors[i].topicos.length == 0 && this.state.topico_selecionado != 'Todas') flag = false;
+            if (this.state.monitors[i].topicos.length == 0 && this.state.materia_selecionada != 'Todas') flag = false;
+            if (!flag)
             {
                 if (i + 1 < this.state.monitors.length) 
                 {
@@ -121,92 +155,42 @@ export default class Catalog extends React.Component {
         this.forceUpdate();
     }
 
-    _filterByTopics(e) {
+    _changeTopic(e) {
         this.setState({ topico_selecionado: e });
         console.log(e);
-        this.state.monitors = JSON.parse(JSON.stringify(this.state.backup));
-        if (e == 'Todas') return;
+        if (e == 'Todas') {
+            this.setState({
+                monitors: JSON.parse(JSON.stringify(this.state.backup))
+            })
+        } 
         
-        for (let i = 0; i < this.state.monitors.length; i++) {
-            if (this.state.monitors[i] == undefined || this.state.monitors[i].topicos == undefined || this.state.monitors[i].topicos == null) 
-            continue;
-            else
-            {
-                if (this.state.monitors[i].topicos.length == 0) 
-                {
-                    if (i + 1 < this.state.monitors.length) 
-                    {
-                        this.state.monitors[i] = this.state.monitors.pop();
-                        i--;
-                    }
-                    else
-                    this.state.monitors.pop();
-                    continue;
-                }
-            }
-            let flag = false;
-            for (let j = 0; j < this.state.monitors[i].topicos.length; j++) {
-                if (this.state.monitors[i].topicos[j].nome == e)
-                    flag = true;
-            }
-
-            if (!flag)
-            {
-                if (i + 1 < this.state.monitors.length) 
-                {
-                    this.state.monitors[i] = this.state.monitors.pop();
-                    i--;
-                }
-                else
-                    this.state.monitors.pop();
-            }
-        }
-        this._filter(!this.state.online, false);
         this.forceUpdate();
+        setTimeout(() => this._filter(), 500);
     }
 
-    _filterByDiscipline(e) {
+    _changeDiscipline(e) {
         this.setState({ materia_selecionada: e });
         console.log(e);
-        this.state.monitors = JSON.parse(JSON.stringify(this.state.backup));
-        if (e == 'Todas') return;
+        if (e == 'Todas') {
+            this.setState({
+                monitors: JSON.parse(JSON.stringify(this.state.backup))
+            })
+        } 
         
-        for (let i = 0; i < this.state.monitors.length; i++) {
-            if (this.state.monitors[i] == undefined || this.state.monitors[i].topicos == undefined || this.state.monitors[i].topicos == null) 
-            continue;
-            else
-            {
-                if (this.state.monitors[i].topicos.length == 0) 
-                {
-                    if (i + 1 < this.state.monitors.length) 
-                    {
-                        this.state.monitors[i] = this.state.monitors.pop();
-                        i--;
-                    }
-                    else
-                    this.state.monitors.pop();
-                    continue;
-                }
-            }
-            let flag = false;
-            for (let j = 0; j < this.state.monitors[i].topicos.length; j++) {
-                if (this.state.monitors[i].topicos[j].materia == e)
-                    flag = true;
-            }
-
-            if (!flag)
-            {
-                if (i + 1 < this.state.monitors.length) 
-                {
-                    this.state.monitors[i] = this.state.monitors.pop();
-                    i--;
-                }
-                else
-                    this.state.monitors.pop();
-            }
-        }
-        this._filter(!this.state.online, false);
         this.forceUpdate();
+        setTimeout(() => this._filter(), 500);
+    }
+
+    _changeOnline(e) {
+        e = !this.state.online;
+        this.setState({ online: e });
+        if (!e) {
+            this.setState({
+                monitors: JSON.parse(JSON.stringify(this.state.backup))
+            })
+        } 
+        this.forceUpdate();
+        setTimeout(() => this._filter(), 500);
     }
 
     getProf() {
@@ -220,18 +204,18 @@ export default class Catalog extends React.Component {
     showMateria(){
         let r = [];
         for (let materia of this.state.materias) {
-            r.push(<a onClick={() => this._filterByDiscipline(materia)}>{ materia } </a>);
+            r.push(<a onClick={() => this._changeDiscipline(materia)}>{ materia } </a>);
         }
-        r.push(<a onClick={() => this._filterByDiscipline('Todas')}>{ 'Todas' } </a>);
+        r.push(<a onClick={() => this._changeDiscipline('Todas')}>{ 'Todas' } </a>);
         return r;
     }
 
     showTopicos(){
         let r = [];
         for (let i = 0; i < this.state.topicos.length; i++) {
-            r.push(<a onClick={() => this._filterByTopics(this.state.topicos[i].nome)}>{ this.state.topicos[i].nome} </a>);
+            r.push(<a onClick={() => this._changeTopic(this.state.topicos[i].nome)}>{ this.state.topicos[i].nome} </a>);
         }
-        r.push(<a onClick={() => this._filterByTopics('Todas')}>{ 'Todas' } </a>);
+        r.push(<a onClick={() => this._changeTopic('Todas')}>{ 'Todas' } </a>);
         return r;
     }
 }
