@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Toolbar.css';
+import { Navbar, NavItem, Icon, Row, Col, CardPanel, Footer, TextInput } from 'react-materialize';
+
 
 class Toolbar extends Component {
 
@@ -74,6 +76,8 @@ class Toolbar extends Component {
                       onClick={ () => this.screenShareButtonOnClick() }>
                   <div className={ this.computedStyles.shareButtonImageStyle }></div>
               </button>
+              <a href="/catalog"><Icon>arrow_back</Icon>
+              </a>
           </div>
           <div id='toolbarRight' className="toolbarRight">
               <span id='connectionStatus' className="connectionStatus">{ this.props.connectionStatus }</span>
