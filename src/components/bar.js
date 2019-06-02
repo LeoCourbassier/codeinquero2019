@@ -11,21 +11,15 @@ export default class Bar extends Component {
     render() {
         return (
             <Navbar fixed="true" className="purple" brand={<a>MonitorApp</a>} alignLinks="right" style={{paddingBotton:"20px"}}>
-                <NavItem href="/chat/" >
-                    Getting started
+                <NavItem href="/home" >
+                    Home
+                </NavItem>
+                <NavItem href="/catalog">
+                    Catalogo
                 </NavItem>
                 <NavItem href="/home">
-                    Components
+                    Login
                 </NavItem>
-                <Dropdown trigger={<a>Dropdown</a>}>
-                    <a href="">
-                        one</a>
-                    <a href="">
-                        two</a>
-                    <Divider />
-                    <a href="">
-                        three</a>
-                </Dropdown>
             </Navbar>
         )
     }
