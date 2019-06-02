@@ -39,7 +39,7 @@ export default class Home extends React.Component {
                         <Col m={1} s={12}></Col>
                         <Col m={4} s={12} >
                             <br/>
-                            <img src={require('../imgs/thiago_photo.jpg')} style={{
+                            <img src={require('../imgs/monitor' + this.state.id + '.jpg')} style={{
                                 width: 150, height: 150,
                                 borderRadius: 100, boxShadow: "1px 1px"
                             }}></img>
@@ -103,25 +103,7 @@ export default class Home extends React.Component {
           .then(response => {
             // create an array of contacts only with relevant data
             console.log(response.data)
-            const newContacts = response.data.map(c => {
-              return {
-                descricao: c.descricao,
-                email: c.email,
-                id: c.id_monitor,
-                instituicao: c.instituicao, 
-                nome: c.nome,
-                media: c.media,
-                reais_por_minuto: c.reais_por_minuto,
-                online: c.online,
-                topicos: c.topicos.map(cc => {
-                    return {
-                        id: cc.id_topico,
-                        materia: cc.materia,
-                        nome: cc.derivadas
-                    }
-                })
-              };
-            });
+            const newContacts = response.data;
     
             // create a new "State" object without mutating 
             // the original State object. 

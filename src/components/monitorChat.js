@@ -6,7 +6,7 @@ import axios from "axios";
 import openSocket from 'socket.io-client';
 
 
-export default class Chat extends Component {
+export default class MonitorChat extends Component {
 
     socket = openSocket('http://localhost:8000');
     constructor(props) {
@@ -39,7 +39,7 @@ export default class Chat extends Component {
     componentDidMount() {
         console.log(this.props.match.params.id);
         axios
-          .get("http://165.227.23.238:5000/monitor/" + this.state.id)
+          .get("http://165.227.23.238:5000/aluno/" + this.state.id)
           .then(response => {
             // create an array of contacts only with relevant data
             console.log(response.data)
@@ -67,7 +67,7 @@ export default class Chat extends Component {
         return (
             <div>
                  <Navbar fixed className="purple" brand={<a />} alignLinks="left" >
-                    <NavItem href="/catalog">
+                    <NavItem href="/monitorCatalog">
                         <Icon className="black-text">arrow_back</Icon>
                     </NavItem>
                     <NavItem className="black-text">

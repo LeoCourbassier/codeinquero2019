@@ -18,15 +18,26 @@ export default class CardC extends React.Component {
                         }}></img>
                         <br></br>
                         { this.props.monitor.nome }<br />
-                        { this.props.monitor.instituicao }<br/>
+                        { this._returnNewCollection() }<br/>
                         { this.props.monitor.media }
                         </Card>
                 </Col>
         );
     }
+
+    _returnNewCollection() {
+        let r = [];
+        for (let i = 0; i < this.props.monitor.topicos.length; i++)
+            r.push(<div>{this.props.monitor.topicos[i].materia}</div>)
+        return r;
+    }
 }
+
+
+
 
 const styleCard = {
     width: "220px",
     align: "center",
 }
+
