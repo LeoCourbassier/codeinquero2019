@@ -8,6 +8,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Chat from './components/chat';
 import UserInfo from './components/userInfo';
+import Login from './components/login';
 
 
 export default class App extends React.Component {
@@ -18,6 +19,7 @@ export default class App extends React.Component {
         <Route path="/catalog" component={Catalog} />
         <Route path="/chat/" component={Chat} />
         <Route path="/userInfo" component={UserInfo}/>
+        <Route path="/login" component={Login}/>
       </Router>
     );
   }
