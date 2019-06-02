@@ -7,11 +7,11 @@ import { Row, Dropdown, Button, Icon, Divider,Switch, Col } from 'react-material
 import M from "materialize-css";
 
 
-export default class Home extends React.Component {
+export default class Catalog extends React.Component {
     render() {
         return (
             <div  style={{ textAlign: "center" }}>
-                <Bar></Bar>
+                <Bar ></Bar>
                 <Row  style={{margin:"20px"}}>
                     <Col>
                     <Dropdown trigger={<Button>Materias</Button>}>
@@ -43,13 +43,12 @@ export default class Home extends React.Component {
                     </Col>
                     <Col><Switch offLabel="Online" onLabel="" /></Col>
                 </Row >
-                <Row style={{margin:"30px", textAlign: "left" }}>
+                <Row style={{margin:"30px", textAlign: "left"}}>
                     <h5>Monitores:</h5>
                 </Row>
                 <Row style={styleRow}>
                     {this.getProf()}
                 </Row>
-                <br></br>
                 <br></br>
                 <Footer></Footer>
             </div>

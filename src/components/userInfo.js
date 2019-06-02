@@ -24,6 +24,7 @@ export default class Home extends React.Component {
                             }}></img>
                             <p><h5>Leonardo Courbassier</h5></p>
                             <p><h5>Nota: 4.5</h5></p>
+                            <p><h5>Valor por min: R$0.20</h5></p>
                             <p><Button
                                 node="a"
                                 waves="light"
