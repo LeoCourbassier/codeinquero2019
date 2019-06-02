@@ -10,7 +10,7 @@ export default class Bar extends Component {
 
     render() {
         return (
-            <Navbar fixed="true" className="purple" brand={<a />} alignLinks="right" style={{backgroundColor:"green"}}>
+            <Navbar fixed="true" className="purple" brand={<a>Logo</a>} alignLinks="right" style={{paddingBotton:"20px"}}>
                 <NavItem href="/chat/" >
                     Getting started
                 </NavItem>

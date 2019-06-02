@@ -8,18 +8,26 @@ export default class CardC extends React.Component {
     render() {
         return (
             <div >
-                    <Col m={2} s={12} style={styleCard}>
-                        <Card header={<CardTitle />} actions={[<a>Link</a>]}>
-                            Here is the standard card with an image thumbnail.
-</Card>
-                    </Col>
-                    
+                <Col m={2} s={12} style={styleCard}>
+                    <Card header={<CardTitle></CardTitle>}
+                        actions={[<a href="/userInfo">Visualizar</a>]}
+                        style={{ textAlign: "center" }}>
+
+                        <img src={require('../imgs/thiago_photo.jpg')} style={{
+                            width: 150, height: 150,
+                            borderRadius: 100, boxShadow: "1px 1px", display: "flex", justifyContent: "center"
+                        }}></img>
+                        <br></br>
+                        Leonardo Courbassier
+                        Unifesp
+                        </Card>
+                </Col>
             </div>
         );
     }
 }
 
 const styleCard = {
-    width:"250px",
-    align:"center"
+    width: "220px",
+    align: "center",
 }

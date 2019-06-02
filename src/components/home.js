@@ -1,5 +1,7 @@
 import React from 'react';
 import CardC from './card';
+import Bar from './bar';
+import Footer from './footer';
 import { Row, Dropdown, Button, Icon, Divider,Switch, Col } from 'react-materialize';
 // Import Materialize
 import M from "materialize-css";
@@ -9,7 +11,8 @@ export default class Home extends React.Component {
     render() {
         return (
             <div>
-                <Row>
+                <Bar ></Bar>
+                <Row  style={{margin:"20px"}}>
                     <Col>
                     <Dropdown trigger={<Button>Materias</Button>}>
                         <a href="#">one</a>
@@ -38,11 +41,17 @@ export default class Home extends React.Component {
                             five</a>
                     </Dropdown>
                     </Col>
-                    <Col><Switch offLabel="Ativo" onLabel="" /></Col>
+                    <Col><Switch offLabel="Online" onLabel="" /></Col>
+                </Row >
+                <Row style={{margin:"30px"}}>
+                    <h5>Monitores:</h5>
                 </Row>
                 <Row style={styleRow}>
                     {this.getProf()}
                 </Row>
+                <br></br>
+                <br></br>
+                <Footer></Footer>
             </div>
         );
     }
@@ -58,4 +67,5 @@ export default class Home extends React.Component {
 
 
 const styleRow = {
+    margin:"20px"
 }

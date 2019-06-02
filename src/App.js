@@ -6,6 +6,7 @@ import Footer from './components/footer';
 import 'materialize-css/dist/css/materialize.min.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Chat from './components/chat';
+import UserInfo from './components/userInfo';
 
 
 export default class App extends React.Component {
@@ -14,6 +15,7 @@ export default class App extends React.Component {
       <Router>
         <Route path="/home" component={Home} />
         <Route path="/chat/" component={Chat} />
+        <Route path="/userInfo" component={UserInfo}/>
       </Router>
     );
   }

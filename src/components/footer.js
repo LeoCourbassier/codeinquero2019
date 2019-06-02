@@ -12,7 +12,7 @@ class Footer2 extends Component {
 
   render() {
     return (
-      <Footer styleName="TodoItem" style={footerStyle}
+      <Footer  styleName="TodoItem" style={footerStyle}
         copyrights="O(n) CodeInQuero"
         moreLinks={<a />}
         links={<ul />}
@@ -30,13 +30,13 @@ class Footer2 extends Component {
 }
 
 const footerStyle = {
-  position: "fixed",
+  position: "",
   width:"100%",
   bottom: "0",
   right: "0",
   bottom: "0",
   left: "0",
-  backgroundColor: "#8e24aa"
+  backgroundColor: "#8e24aa",
 }
 
 export default Footer2;
