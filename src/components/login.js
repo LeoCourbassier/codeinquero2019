@@ -14,20 +14,22 @@ export default class Login extends Component {
         return (
             <div style={{ textAlign: "center" }}>
                 <Bar ></Bar>
-                <Row style={{ textAlign: "center" }}>
-                    <Col m={4} s={12}></Col>
-                    <Col m={6} s={12}>
-                        <CardPanel className="center-align center white-text" style={styleForm}>
-                            <Row>
-                                <Col s={12}>
-                                    <TextInput value={this.state.email} onChange={(e) => this._changeMsg(e)} label="Email" />
-                                    <TextInput password label="Password" />
-                                </Col>
-                            </Row>
-                            <Button onClick={() => this._checkLogin()} waves="light" style={{ marginRight: '5px', backgroundColor: "gray" }}>Login</Button>
-                        </CardPanel>
-                    </Col>
-                </Row>
+                <div className="container" style={{marginTop:"200px"}}>
+                    <Row style={{ textAlign: "center", height: "580px" }}>
+                        <Col m={4} s={12}></Col>
+                        <Col m={5} s={12}>
+                            <CardPanel className="center-align center white-text" style={styleForm}>
+                                <Row>
+                                    <Col s={12}  style={{color: "white" }}>
+                                        <TextInput style={{color: "white" }} value={this.state.email} onChange={(e) => this._changeMsg(e)} label="Email" />
+                                        <TextInput style={{color: "white" }} password label="Password" />
+                                    </Col>
+                                </Row>
+                                <Button onClick={() => this._checkLogin()} waves="light" style={{ marginRight: '5px', backgroundColor: "purple" }}>Login</Button>
+                            </CardPanel>
+                        </Col>
+                    </Row>
+                </div>
                 <Footer style={styleFooter}></Footer>
             </div>
         );
