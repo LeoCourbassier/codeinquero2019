@@ -94,7 +94,7 @@ export default class Catalog extends React.Component {
     getProf() {
         let r = [];
         for (let i = 0; i < this.state.monitors.length; i++) {
-            r.push(<CardC name={ this.state.monitors[i].nome } inst={ this.state.monitors[i].instituicao } />);
+            r.push(<CardC monitor={ this.state.monitors[i]} />);
         }
         return r;
     }

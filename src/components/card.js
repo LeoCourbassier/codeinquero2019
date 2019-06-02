@@ -18,8 +18,8 @@ export default class CardC extends React.Component {
                             borderRadius: 100, boxShadow: "1px 1px", display: "flex", justifyContent: "center"
                         }}></img>
                         <br></br>
-                        { this.props.name }<br />
-                        { this.props.inst }
+                        { this.props.monitor.nome }<br />
+                        { this.props.monitor.instituicao }
                         </Card>
                 </Col>
             </div>
