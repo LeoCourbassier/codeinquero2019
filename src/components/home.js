@@ -9,7 +9,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <div style={styleRow}>
-
+                
                 <Row>
                     {this.getProf()}
                 </Row>
