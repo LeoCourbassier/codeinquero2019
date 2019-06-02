@@ -84,9 +84,9 @@ export default class Chat extends Component {
                     </NavItem>
                 </Navbar>
 
-                <div className="message-wrapper" style={{ marginBottom: 20, overflowY: "auto", maxHeight: "500px", minHeight: "500px" }} >{this._getMessages()}</div>
+                <div className="message-wrapper" style={{ marginBottom: 20, overflowY: "auto", maxHeight: "800px", minHeight: "800px" }} >{this._getMessages()}</div>
 
-                <Row className="purple" style={{ boxShadow: "-5px -6px 6px rgba(0, 0, 0, 0.2)", borderRadius: "20px" }}>
+                <Row className="purple" style={{ boxShadow: "-5px -6px 6px rgba(0, 0, 0, 0.2)", borderRadius: "20px"}}>
                     <Col l={11}><input value={this.state.msg}  onKeyDown={(e) => this._handleEnter(e)} onChange={ (e) => this._changeMsg(e) } type="text" className="white-text"/></Col>
                     <Col l={1} onClick={() => this._logClick()}><Icon className="white-text" small>chat</Icon></Col>
                 </Row>

@@ -40,7 +40,7 @@ export default class Home extends React.Component {
             <div style={{ textAlign: "center" }}>
                 <Bar ></Bar>
                 <br></br>
-                <div class="content">
+                <div class="content"  style={{height:"750px"}}>
                     <Row>
                         <Col m={1} s={12}></Col>
                         <Col m={4} s={12} >
