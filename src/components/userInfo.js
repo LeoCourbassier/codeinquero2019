@@ -60,6 +60,15 @@ export default class Home extends React.Component {
                                 style={{ marginRight: '5px' }}>
                                 Conversar
                                 <Icon left>chat</Icon>
+                            </Button></p><br/>
+                            <p><Button
+                                node="a"
+                                waves="light"
+                                large
+                                href={"/chat/" + this.state.id}
+                                style={{ marginRight: '5px' }}>
+                                Contratar
+                                <Icon left>shop</Icon>
                             </Button></p>
                         </Col>
                         <Col m={5} s={12} >
