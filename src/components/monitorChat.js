@@ -8,7 +8,7 @@ import openSocket from 'socket.io-client';
 
 export default class MonitorChat extends Component {
 
-    socket = openSocket('http://localhost:8000');
+    socket = openSocket('http://165.227.23.238:8000');
     constructor(props) {
         super(props);
         this.state = { msg: '', messages: [], id: 4, monitor: {
