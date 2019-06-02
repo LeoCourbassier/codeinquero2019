@@ -10,7 +10,7 @@ import M from "materialize-css";
 export default class Home extends React.Component {
     render() {
         return (
-            <div style={{ backgroundColor: "#8e24aa", overflowY: "auto", maxHeight: "700px" }}>
+            <div style={{ backgroundColor: "#8e24aa"}}>
                 <Bar></Bar>
                 <Row style={{ margin: "20px", height: "600px" }}>
                     <Col  m={2} s={12}>
@@ -23,15 +23,9 @@ export default class Home extends React.Component {
                             width: 400, height: 400}}></img>
                     </Col>
                 </Row>
-                <Row style={{ margin: "30px", textAlign: "left" }}>
-                    teste
-                </Row>
-                <Row style={styleRow}>
-
-                </Row>
                 <br></br>
                 <br></br>
-                <Footer style={{ width: "100%" }}></Footer>
+                <Footer style={{}}></Footer>
             </div>
         );
     }
