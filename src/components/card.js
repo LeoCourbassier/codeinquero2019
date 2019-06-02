@@ -13,13 +13,14 @@ export default class CardC extends React.Component {
                         actions={[<a href="/userInfo">Visualizar</a>]}
                         style={{ textAlign: "center" }}>
 
-                        <img src={require('../imgs/thiago_photo.jpg')} style={{
+                        <img src={require('../imgs/monitor' + this.props.monitor.id + '.jpg')} style={{
                             width: 150, height: 150,
                             borderRadius: 100, boxShadow: "1px 1px", display: "flex", justifyContent: "center"
                         }}></img>
                         <br></br>
                         { this.props.monitor.nome }<br />
-                        { this.props.monitor.instituicao }
+                        { this.props.monitor.instituicao }<br/>
+                        { this.props.monitor.media }
                         </Card>
                 </Col>
             </div>

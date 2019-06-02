@@ -28,7 +28,8 @@ export default class Catalog extends React.Component {
                 email: c.email,
                 id: c.id_monitor,
                 instituicao: c.instituicao, 
-                nome: c.nome
+                nome: c.nome,
+                media: c.media
               };
             });
     
