@@ -7,8 +7,8 @@ import M from "materialize-css";
 export default class CardC extends React.Component {
     render() {
         return (
-            <div style={styleCard}>
-                    <Col m={6} s={12}>
+            <div >
+                    <Col m={2} s={12} style={styleCard}>
                         <Card header={<CardTitle />} actions={[<a>Link</a>]}>
                             Here is the standard card with an image thumbnail.
 </Card>
@@ -20,5 +20,6 @@ export default class CardC extends React.Component {
 }
 
 const styleCard = {
-    maxWidth:"500px"
+    width:"250px",
+    align:"center"
 }
