@@ -76,7 +76,7 @@ export default class Chat extends Component {
                         </div>
                     </NavItem>
                     <NavItem className="black-text right" href={ '/userInfo/' + this.state.id }>
-                        {this.state.monitor.nome}
+                        <bold className="black-text">{this.state.monitor.nome}</bold>
                     </NavItem>
                     
                     <NavItem className="black-text" href={ '/videocall/' + this.state.id }>

@@ -7,9 +7,9 @@ import M from "materialize-css";
 export default class CardC extends React.Component {
     render() {
         return (
-                <Col m={2} s={12} style={styleCard}>
+                <Col g={4} m={6} s={12} style={styleCard}>
                     <Card header={<CardTitle></CardTitle>}
-                        actions={[<a href={"/userInfo/" + this.props.monitor.id}>Visualizar</a>]}
+                        actions={[<a href={"/userInfo/" + this.props.monitor.id_monitor}>Visualizar</a>]}
                         style={{ textAlign: "center" }}>
 
                         <img src={require('../imgs/monitor' + this.props.monitor.id_monitor + '.jpg')} style={{
@@ -20,9 +20,9 @@ export default class CardC extends React.Component {
                         { this.props.monitor.nome }<br />
                         { this.props.monitor.instituicao }<br/>
                         <div>{this.props.monitor.online == 1 ? <Icon className="green-text">brightness_1</Icon> : <Icon className="red-text">clear</Icon>}</div>
-                        <div className="valign-wrapper"><span style={{ textAlign: "center" }}>{ parseFloat(this.props.monitor.media).toFixed(2) }</span><Icon small className="yellow-text" >grade</Icon></div>
+                        <div className="container valign-wrapper"><span style={{ textAlign: "center" }}>{ parseFloat(this.props.monitor.media).toFixed(2) }</span><Icon small className="yellow-text" >grade</Icon></div>
                         <span className="black-text">
-                            <b>Materias:</b>
+                            <b>Matérias:</b>
                             <br/>
                             <div style={{ minHeight:"50px", maxHeight:"50px", overflow: "auto" }}>{ this._returnNewCollection() }</div>
                         </span>
