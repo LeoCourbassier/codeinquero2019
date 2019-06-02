@@ -50,8 +50,8 @@ export default class Home extends React.Component {
                                 borderRadius: 100, boxShadow: "1px 1px"
                             }}></img>
                             <p><h5>{ this.state.monitor.nome }</h5></p>
-                            <p><h5>Nota: { this.state.monitor.media }</h5></p>
-                            <p><h5>Valor por min: R$ { this.state.monitor.reais_por_minuto }</h5></p>
+                            <p><h5>Nota: { parseFloat(this.state.monitor.media).toFixed(2) }</h5></p>
+                            <p><h5>Valor por min: R$ { parseFloat(this.state.monitor.reais_por_minuto).toFixed(2) }</h5></p>
                             <p><Button
                                 node="a"
                                 waves="light"
