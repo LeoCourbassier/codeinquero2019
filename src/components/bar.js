@@ -10,22 +10,16 @@ export default class Bar extends Component {
 
     render() {
         return (
-            <Navbar fixed="true" className="purple" brand={<a />} alignLinks="right" style={{backgroundColor:"green"}}>
-                <NavItem href="/chat/" >
-                    Getting started
+            <Navbar fixed="true" className="purple" brand={<a  style={{left: "50px"}}>MonitorApp</a>} alignLinks="right" style={{paddingBotton:"20px"}}>
+                <NavItem href="/home" >
+                    Home
+                </NavItem>
+                <NavItem href="/catalog">
+                    Catalogo
                 </NavItem>
                 <NavItem href="/home">
-                    Components
+                    Login
                 </NavItem>
-                <Dropdown trigger={<a>Dropdown</a>}>
-                    <a href="">
-                        one</a>
-                    <a href="">
-                        two</a>
-                    <Divider />
-                    <a href="">
-                        three</a>
-                </Dropdown>
             </Navbar>
         )
     }
