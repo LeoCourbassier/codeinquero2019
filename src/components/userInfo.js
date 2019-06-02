@@ -1,13 +1,29 @@
 import React from 'react';
-import CardC from './card';
 import Bar from './bar';
 import Footer from './footer';
 import { Row, Dropdown, Button, Icon, Divider, Switch, Col,CardPanel } from 'react-materialize';
-// Import Materialize
-import M from "materialize-css";
+import axios from "axios";
 
 
 export default class Home extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { 
+            id: 1, monitor: {
+                descricao: '',
+                email: '',
+                instituicao: '', 
+                nome: '',
+                media: '',
+                reais_por_minuto: '',
+                topicos: [{
+                    materia: 'Matematica',
+                    nome: 'Derivadas'
+                }]
+            } 
+        };
+    }
 
     componentDidMount() {
         this._getUserInfo();
@@ -27,14 +43,14 @@ export default class Home extends React.Component {
                                 width: 150, height: 150,
                                 borderRadius: 100, boxShadow: "1px 1px"
                             }}></img>
-                            <p><h5>Leonardo Courbassier</h5></p>
-                            <p><h5>Nota: 4.5</h5></p>
-                            <p><h5>Valor por min: R$0.20</h5></p>
+                            <p><h5>{ this.state.monitor.nome }</h5></p>
+                            <p><h5>Nota: { this.state.monitor.media }</h5></p>
+                            <p><h5>Valor por min: R$ { this.state.monitor.reais_por_minuto }</h5></p>
                             <p><Button
                                 node="a"
                                 waves="light"
                                 large
-                                href="/chat"
+                                href={"/chat/" + this.state.id}
                                 style={{ marginRight: '5px' }}>
                                 Conversar
                                 <Icon left>chat</Icon>
@@ -48,7 +64,7 @@ export default class Home extends React.Component {
                                         <span className="white-text">
                                             <b>Descrição:</b>
                                             <br/>
-                                            Minha descrição
+                                            { this.state.monitor.descricao }
                                             </span>
                                     </CardPanel>
                                 </Col>
@@ -57,21 +73,8 @@ export default class Home extends React.Component {
                                         <span className="white-text">
                                             <b>Materias:</b>
                                             <br/>
-                                            Minha descrição
-                                            </span>
-                                    </CardPanel>
-                                </Col>
-                                <Col m={12} s={12}>
-                                    <CardPanel className="teal" > 
-                                        <span className="white-text">
-                                            <b>Horários:</b>
-                                            <br/>
-                                            <p>Segunda:</p>
-                                            <p>Terça:</p>
-                                            <p>Quarta:</p>
-                                            <p> Quinta:</p>
-                                            <p>Sexta:</p>
-                                            </span>
+                                            { this._returnNewCollection() }
+                                        </span>
                                     </CardPanel>
                                 </Col>
                             </Row>
@@ -84,11 +87,53 @@ export default class Home extends React.Component {
         );
     }
 
+    _returnNewCollection() {
+        let r = [];
+        for (let i = 0; i < this.state.monitor.topicos.length; i++)
+            r.push(<div>{this.state.monitor.topicos[i].materia}, em especial: {this.state.monitor.topicos[i].nome}</div>)
+        return r;
+    }
+
     _getUserInfo() {
         this.setState({ 
-            user: {
-                id: this.props.match.params.id
-            }
+            id: this.props.match.params.id
         });
+        axios
+          .get("http://165.227.23.238:5000/monitor/" + this.state.id)
+          .then(response => {
+            // create an array of contacts only with relevant data
+            console.log(response.data)
+            const newContacts = response.data.map(c => {
+              return {
+                descricao: c.descricao,
+                email: c.email,
+                id: c.id_monitor,
+                instituicao: c.instituicao, 
+                nome: c.nome,
+                media: c.media,
+                reais_por_minuto: c.reais_por_minuto,
+                online: c.online,
+                topicos: c.topicos.map(cc => {
+                    return {
+                        id: cc.id_topico,
+                        materia: cc.materia,
+                        nome: cc.derivadas
+                    }
+                })
+              };
+            });
+    
+            // create a new "State" object without mutating 
+            // the original State object. 
+            const newState = Object.assign({}, this.state, {
+              monitor: newContacts
+            });
+    
+            // store the new state object in the component's state
+            this.setState(newState);
+            console.log(JSON.stringify(this.state.monitor))
+          })
+          .catch(error => console.log(error));
+        
     }
 }
