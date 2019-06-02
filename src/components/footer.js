@@ -36,7 +36,7 @@ const footerStyle = {
   right: "0",
   bottom: "0",
   left: "0",
-  backgroundColor: "purple"
+  backgroundColor: "#8e24aa"
 }
 
 export default Footer2;
