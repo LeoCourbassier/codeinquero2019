@@ -151,7 +151,7 @@ export default class MonitorCatalog extends React.Component {
 
 const styleRow = {
     margin: "20px",
-    minHeight: "350px",
-    maxHeight: "350px",
+    minHeight: "600x",
+    maxHeight: "600px",
     overflowY: "scroll"
 }

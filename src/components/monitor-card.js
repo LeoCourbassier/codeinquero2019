@@ -10,7 +10,7 @@ export default class CardC extends React.Component {
         return (
                 <Col m={2} s={12} style={styleCard}>
                     <Card header={<CardTitle></CardTitle>}
-                        actions={[<a href={"/monitorChat/" + this.props.monitor.id}>Visualizar</a>]}
+                        actions={[<a href={"/monitorChat/" + this.props.monitor.id} ><div className="container"  style={{color: "purple" }}>Conversar</div></a>]}
                         style={{ textAlign: "center" }}>
 
                         <img src={require('../imgs/aluno' + this.props.monitor.id + '.jpg')} style={{
