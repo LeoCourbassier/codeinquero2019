@@ -8,6 +8,11 @@ import M from "materialize-css";
 
 
 export default class Home extends React.Component {
+
+    componentDidMount() {
+        this._getUserInfo();
+    }
+
     render() {
         return (
             <div style={{ textAlign: "center" }}>
@@ -78,8 +83,12 @@ export default class Home extends React.Component {
             </div>
         );
     }
-}
 
-
-const styleRow = {
+    _getUserInfo() {
+        this.setState({ 
+            user: {
+                id: this.props.match.params.id
+            }
+        });
+    }
 }

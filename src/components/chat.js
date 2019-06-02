@@ -21,12 +21,12 @@ export default class Chat extends Component {
                             <img src={ require('../imgs/thiago_photo.jpg') } style={{ width: 50, height: 50, borderRadius: 100, boxShadow: "1px 1px", verticalAlign: "middle" }}></img>
                         </div>
                     </NavItem>
-                    <NavItem className="black-text right">
+                    <NavItem className="black-text right" href={ '/userInfo/' + this.state.id }>
                         Leonardo Courbassier Martins
                     </NavItem>
                     
                     <NavItem className="black-text" href={ '/videocall/' + this.state.id }>
-                        <Icon>call</Icon>
+                        <Icon>camera_alt</Icon>
                     </NavItem>
                 </Navbar>
 

@@ -17,7 +17,7 @@ export default class App extends React.Component {
         <Route path="/home" component={Home} />
         <Route path="/catalog" component={Catalog} />
         <Route path="/chat/" component={Chat} />
-        <Route path="/userInfo" component={UserInfo}/>
+        <Route path="/userInfo/:id" component={UserInfo}/>
         <Route path="/login" component={Login}/>
         <Route path="/videocall/:id" component={VideoCall} />
       </Router>
