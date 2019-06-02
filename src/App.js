@@ -15,6 +15,7 @@ export default class App extends React.Component {
         <Bar />
         <Route path="/home" component={Home} />
         <Route path="/chat/" component={Chat} />
+        <Footer />
       </Router>
     );
   }

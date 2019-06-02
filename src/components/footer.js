@@ -30,7 +30,7 @@ class Footer2 extends Component {
 }
 
 const footerStyle = {
-  position: "absolute",
+  position: "",
   widtth:"100%",
   bottom: "0",
   right: "0",
