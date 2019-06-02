@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from '../../logo.svg';
+import CardC from './card';
+import { Row, Col, Card, CardTitle } from 'react-materialize';
+// Import Materialize
+import M from "materialize-css";
+
 
 export default class Home extends React.Component {
     render() {
-        const { className } = this.props;
         return (
-        <div className="App">
-            <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-                { className }
-            </p>
-            <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Learn React
-            </a>
-            </header>
-        </div>
+            <div>
+            {this.getProf()}
+            <CardC></CardC>
+            </div>
         );
+    }
+
+    getProf() {
+        let r = [];
+        for (let i = 0; i < 10; i++)
+        {
+            r.push(<CardC></CardC>);
+        }
+        return r;
     }
 }
