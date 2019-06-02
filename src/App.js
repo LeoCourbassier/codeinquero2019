@@ -12,10 +12,8 @@ export default class App extends React.Component {
   render() {
     return (
       <Router>
-        <Bar />
         <Route path="/home" component={Home} />
         <Route path="/chat/" component={Chat} />
-        <Footer />
       </Router>
     );
   }

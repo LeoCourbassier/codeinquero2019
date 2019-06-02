@@ -13,7 +13,7 @@ class Footer2 extends Component {
   render() {
     return (
       <Footer styleName="TodoItem" style={footerStyle}
-        copyrights="&copy 2015 Copyright Text"
+        copyrights="O(n) CodeInQuero"
         moreLinks={<a />}
         links={<ul />}
         className="example"
