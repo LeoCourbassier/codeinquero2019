@@ -1,5 +1,5 @@
 import React from 'react';
-import CardC from './card';
+import CardC from './monitor-card';
 import Bar from './bar';
 import Footer from './footer';
 import axios from "axios";
@@ -32,7 +32,8 @@ export default class MonitorCatalog extends React.Component {
                 id: c.id_aluno,
                 instituicao: c.instituicao, 
                 nome: c.nome,
-                online: c.online
+                online: c.online,
+                topicos: c.topicos
               };
             });
     
