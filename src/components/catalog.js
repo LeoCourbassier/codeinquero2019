@@ -80,7 +80,7 @@ export default class Catalog extends React.Component {
                 <Bar ></Bar>
                 <Row style={{ margin: "20px" }}>
                     <Col>
-                        <Dropdown trigger={<Button>Matérias</Button>}>
+                        <Dropdown trigger={<Button>Matérias</Button>} value={this.state.materia_selecionada} > 
                             {this.showMateria()}
                         </Dropdown>
                     </Col>
