@@ -70,7 +70,7 @@ export default class Catalog extends React.Component {
 
     render() {
         return (
-            <div style={{ textAlign: "center" }}>
+            <div style={{ textAlign: "center", overflowY: "scroll"}}>
                 <Bar ></Bar>
                 <Row style={{ margin: "20px" }}>
                     <Col>
@@ -223,7 +223,7 @@ export default class Catalog extends React.Component {
 
 const styleRow = {
     margin: "20px",
-    minHeight: "350px",
-    maxHeight: "350px",
+    minHeight: "600px",
+    maxHeight: "600px",
     overflowY: "scroll"
 }

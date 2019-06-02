@@ -15,29 +15,15 @@ export default class Footer2 extends Component {
     return (
       <Footer style={footerStyle}
         copyrights="Odiene CodeInQuero 2019" >
-            <Col  style={{ width: "300px" }}>
-              <p><b>Fale com a gente</b></p>
-              +55 12 982054061
-              meajuda@monitorapp.com
-          </Col>
-          <Col style={{ width: "300px" }}>
-              <p><b>Fale com a gente</b></p>
-              +55 12 982054061
-              meajuda@monitorapp.com
-          </Col>
-          <Col  style={{ width: "300px" }}>
-              <p><b>Fale com a gente</b></p>
-              +55 12 982054061
-              meajuda@monitorapp.com
-          </Col>
       </Footer>
     )
   }
 }
 
 const footerStyle = {
-  position: "absolute",
+  position: "",
   width:"100%",
+  bottom:"0",
   backgroundColor: "#8e24aa",
   textAlign: "center",
 }
