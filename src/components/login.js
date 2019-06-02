@@ -1,7 +1,7 @@
 import React from 'react';
 import Bar from './bar';
 import Footer from './footer';
-import { Row, Col, CardPanel, TextInput, Button } from 'react-materialize';
+import { Row, Col, CardPanel, TextInput, Button, Dropdown } from 'react-materialize';
 // Import Materialize
 import M from "materialize-css";
 
@@ -14,10 +14,15 @@ export default class Login extends React.Component {
 
                 <CardPanel className="teal" style={styleForm}>
                     <span className="white-text">
+
                         <TextInput label="First Name" />
                         <TextInput password label="Password" />
 
                         <div>
+                            <Dropdown trigger={<Button>Perfil</Button>}>
+                                <a href="#">Aluno</a>
+                                <a href="#">Monitor</a>
+                            </Dropdown>
                             <Button waves="light" style={{ marginRight: '5px' }}>
                                 Login
                             </Button>
