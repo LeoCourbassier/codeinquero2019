@@ -7,7 +7,6 @@ import M from "materialize-css";
 export default class CardC extends React.Component {
     render() {
         return (
-            <div >
                 <Col m={2} s={12} style={styleCard}>
                     <Card header={<CardTitle></CardTitle>}
                         actions={[<a href="/userInfo">Visualizar</a>]}
@@ -23,7 +22,6 @@ export default class CardC extends React.Component {
                         { this.props.monitor.media }
                         </Card>
                 </Col>
-            </div>
         );
     }
 }

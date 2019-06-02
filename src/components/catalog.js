@@ -13,12 +13,40 @@ export default class Catalog extends React.Component {
     // default State object
     state = {
         monitors: [],
-
+        materias: [],
+        temas: [],
     };
 
     componentDidMount() {
         axios
           .get("http://165.227.23.238:5000/monitores/")
+          .then(response => {
+            // create an array of contacts only with relevant data
+            console.log(response.data)
+            const newContacts = response.data.map(c => {
+              return {
+                descricao: c.descricao,
+                email: c.email,
+                id: c.id_monitor,
+                instituicao: c.instituicao, 
+                nome: c.nome,
+                media: c.media
+              };
+            });
+    
+            // create a new "State" object without mutating 
+            // the original State object. 
+            const newState = Object.assign({}, this.state, {
+              monitors: newContacts
+            });
+    
+            // store the new state object in the component's state
+            this.setState(newState);
+          })
+          .catch(error => console.log(error));
+
+          axios
+          .get("http://165.227.23.238:5000/materia/")
           .then(response => {
             // create an array of contacts only with relevant data
             console.log(response.data)
