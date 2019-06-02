@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, NavItem, Icon, Row, Col, CardPanel, Footer, TextInput } from 'react-materialize';
-import './chat.scss';
+import './chat.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default class Chat extends Component {
