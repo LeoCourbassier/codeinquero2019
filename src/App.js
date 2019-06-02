@@ -8,6 +8,7 @@ import Chat from './components/chat';
 import UserInfo from './components/userInfo';
 import Login from './components/login';
 import VideoCall from './components/videocall';
+import MonitorChat from './components/monitorChat';
 
 
 export default class App extends React.Component {
@@ -20,6 +21,7 @@ export default class App extends React.Component {
         <Route path="/userInfo/:id" component={UserInfo}/>
         <Route path="/login" component={Login}/>
         <Route path="/videocall/:id" component={VideoCall} />
+        <Route path="/monitorChat/:id" component={MonitorChat} />
       </Router>
     );
   }

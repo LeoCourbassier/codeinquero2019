@@ -17,7 +17,7 @@ export default class Bar extends Component {
                 <NavItem href="/catalog">
                     Catalogo
                 </NavItem>
-                <NavItem href="/home">
+                <NavItem href="/login">
                     Login
                 </NavItem>
             </Navbar>
