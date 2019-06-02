@@ -72,7 +72,7 @@ export default class MonitorChat extends Component {
                     </NavItem>
                     <NavItem className="black-text">
                         <div className="valign-wrapper" style={{ height: "100%", display: "inline-block" }}>
-                            <img src={ require('../imgs/monitor' + this.state.id + '.jpg') } style={{ width: 50, height: 50, borderRadius: 100, boxShadow: "1px 1px", verticalAlign: "middle" }}></img>
+                            <img src={ require('../imgs/aluno' + this.state.id + '.jpg') } style={{ width: 50, height: 50, borderRadius: 100, boxShadow: "1px 1px", verticalAlign: "middle" }}></img>
                         </div>
                     </NavItem>
                     <NavItem className="black-text right" href={ '/userInfo/' + this.state.id }>
@@ -139,7 +139,7 @@ export default class MonitorChat extends Component {
             if (this.state.messages[i].id == 1)
                 msg.push(
                     <div className="msgcontainer darker">
-                        <img src={ require("../imgs/thiago_photo.jpg") } alt="Avatar" className="right"></img>
+                        <img src={ require('../imgs/monitor' + this.state.id + '.jpg') } alt="Avatar" className="right"></img>
                         <p>{ this.state.messages[i].msg }</p>
                         <span className="time-left">{ this.state.messages[i].date }</span>
                     </div>
@@ -147,7 +147,7 @@ export default class MonitorChat extends Component {
             else
                 msg.push(
                     <div className="msgcontainer">
-                        <img src={ require('../imgs/monitor' + this.state.id + '.jpg') } alt="Avatar" className="left"></img>
+                        <img src={ require('../imgs/aluno' + this.state.id + '.jpg') } alt="Avatar" className="left"></img>
                         <p>{ this.state.messages[i].msg }</p>
                         <span className="time-left">{ this.state.messages[i].date }</span>
                     </div>

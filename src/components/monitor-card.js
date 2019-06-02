@@ -9,17 +9,16 @@ export default class CardC extends React.Component {
         return (
                 <Col m={2} s={12} style={styleCard}>
                     <Card header={<CardTitle></CardTitle>}
-                        actions={[<a href={"/userInfo/" + this.props.monitor.id}>Visualizar</a>]}
+                        actions={[<a href={"/monitorChat/" + this.props.monitor.id}>Visualizar</a>]}
                         style={{ textAlign: "center" }}>
 
-                        <img src={require('../imgs/monitor' + this.props.monitor.id + '.jpg')} style={{
+                        <img src={require('../imgs/aluno' + this.props.monitor.id + '.jpg')} style={{
                             width: 150, height: 150,
                             borderRadius: 100, boxShadow: "1px 1px", display: "flex", justifyContent: "center"
                         }}></img>
                         <br></br>
                         { this.props.monitor.nome }<br />
                         { this._returnNewCollection() }<br/>
-                        { this.props.monitor.media }
                         </Card>
                 </Col>
         );

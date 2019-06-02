@@ -19,7 +19,7 @@ export default class CardC extends React.Component {
                         <br></br>
                         { this.props.monitor.nome }<br />
                         { this.props.monitor.instituicao }<br/>
-                        { this.props.monitor.media }
+                        { parseFloat(this.props.monitor.media).toFixed(2) }
                         </Card>
                 </Col>
         );

@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Bar from './bar';
 import Footer from './footer';
 import { Row, Col, CardPanel, TextInput, Button, Dropdown } from 'react-materialize';
-// Import Materialize
-import M from "materialize-css";
+import axios from "axios";
 
 
-export default class Login extends React.Component {
+export default class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { email: '' }
+    }
     render() {
         return (
             <div style={{ textAlign: "center" }}>
                 <Bar ></Bar>
 
-                <CardPanel className="teal" style={styleForm}>
+                <CardPanel className="center-align teal" style={styleForm}>
                     <span className="white-text">
 
-                        <TextInput label="Email" />
+                        <TextInput value={this.state.email} onChange={ (e) => this._changeMsg(e) } label="Email" />
                         <TextInput password label="Password" />
 
                         <div>
-                            <Button waves="light" style={{ marginRight: '5px' }}>
+                            <Button onClick={ () => this._checkLogin() } waves="light" style={{ marginRight: '5px' }}>
                                 Login
                             </Button>
                         </div>
@@ -31,10 +34,39 @@ export default class Login extends React.Component {
         );
     }
 
+    _checkLogin() {
+        axios
+          .get("http://165.227.23.238:5000/alunos/")
+          .then(response => {
+            // create an array of contacts only with relevant data
+            console.log(response.data)
+            response.data.forEach((it) => {
+                if (it.email == this.state.email)
+                    window.location.href = "/catalog";
+            })
+          })
+          .catch(error => console.log(error));
 
+          axios
+          .get("http://165.227.23.238:5000/monitores/")
+          .then(response => {
+            // create an array of contacts only with relevant data
+            console.log(response.data)
+            response.data.forEach((it) => {
+                if (it.email == this.state.email)
+                    window.location.href = "/monitorCatalog";
+            })
+          })
+          .catch(error => console.log(error));
+    }
+
+    _changeMsg(e) {
+        this.setState({
+            email: e.target.value
+        });
+    }
 }
 
-//n funciona
 const styleFooter = {
     position: "fixed",
     bottom: "0",
@@ -43,8 +75,5 @@ const styleFooter = {
 }
 
 const styleForm = {
-    width: "220px",
-    textAlign: "center",
-    position: "center",
-    alignContent: "center"
+    margin: 20
 }
